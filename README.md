@@ -1,7 +1,6 @@
 # **Dev Center Build Script**
 
-    This is a shell script which help us to 
-    run several build command for dev-center in one place.
+    This is a shell script which help us to run several build command for Dev Center in one place.
 
 ----------
 ### How to run this script ?
