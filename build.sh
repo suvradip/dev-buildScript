@@ -65,27 +65,43 @@ baseUrl_paradocs ()
 }
 
 
+scriptMessage ()
+{
+	echo "\n\nsudo sh ./build.sh _command_\n"
+	echo "\nList of available commands"
+	echo "\ncommnad   -   description"
+	echo "\nALL -  complete dev center build Process."
+	echo "\nDEV -  build for FusioncCharts"
+	echo "\nLOCAL - build for Local System"
+	echo "\nAPI-DATA - generate api-data.json"
+	echo "\nTOC - to generate table of content base on baseurl in _config.yml file."
+	echo "\nCFP - to change file permission of out folder to 777\n\n\n\n"
+}
 
 OPTION=$1
 
 case "$OPTION" in
-   "ALL") echo "Full build system is initializing ..." 
+   "ALL") echo "\nFull build system is initializing ..." 
 		  allBuild	
    ;;
-   "LOCAL") echo "Local build system is initializing ..." 
+   "LOCAL") echo "\nLocal build system is initializing ..." 
 		    localBuild	
    ;;
-   "DEV") echo "Dev build system is initializing ..."
+   "DEV") echo "\nDev build system is initializing ..."
 		  devBuild	
    ;;
-   "API-DATA") echo "Api-data.json build system is initializing ..."
+   "API-DATA") echo "\nApi-data.json build system is initializing ..."
 			   apiDataJson
    ;;
-   "TOC") echo "Table-Of-Content build system is initializing ..."
+   "TOC") echo "\nTable-Of-Content build system is initializing ..."
 			   buildTocHtml
    ;;
-   "CFP") echo "File permission is changing ..."
+   "CFP") echo "\nFile permission is changing ..."
 			   filePermission
+   ;;
+   *) echo "\nInvalid command .."
+			scriptMessage
+			   
    ;;
 esac
 
