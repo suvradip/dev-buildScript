@@ -3,7 +3,7 @@
 
 ----------
 ### How to run this script ?
-##### To initialize the build , try to run this command 
+##### To initialize the build , try to run this command from terminal within ***paradocs*** folder
 	sh ./build.sh _command_
 	
 for example   **sh ./build.sh  ALL**
