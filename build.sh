@@ -17,15 +17,16 @@
 # 5. TOC - to generate table of content base on baseurl in _config.yml file.
 # 6. CFP - to change file permission of out folder to 777
 
-
+#run all the build process one by one
 allBuild ()
 {
-	apiDataJson
+	apiDataJson 
 	buildTocHtml
 	sudo jekyll serve
 	echo "Finish ALL_BUILD!!"
 }
 
+#makes the local build 
 localBuild ()
 {
 	buildTocHtml
@@ -33,6 +34,7 @@ localBuild ()
 	echo "Finish LOCAL_BUILD!!"
 }
 
+#makes the build for FusionCharts web
 devBuild ()
 {
 	baseUrl_dev
@@ -45,6 +47,7 @@ devBuild ()
 	echo "Finish DEV_BUILD!!"
 }
 
+#generates table of content base on the baseUrl
 buildTocHtml ()
 {
 	cd jekyll/ 
@@ -52,18 +55,21 @@ buildTocHtml ()
 	echo "Finish BUILD_TOC!!"
 }
 
+# generates api-data.json base on the api-modification.json and xt-edge
 apiDataJson ()
 {
 	./node_modules/jsdoc/jsdoc -c config.json
 	echo "Finish API_DATA!!"; 
 }
 
+#file permission changing 
 filePermission ()
 {
 	sudo chmod 777 -R jekyll/out/
 	echo "Finish FILE_PERMISSION!!";
 }
 
+#changin the base url from /paradocs/jekyll/out/ to /dev/
 baseUrl_dev ()
 {
 	VAR_1='\/paradocs\/jekyll\/out\/'
@@ -72,7 +78,7 @@ baseUrl_dev ()
 	sed -i -e $VAR_3 jekyll/_config.yml
 	echo "base url change to /dev/"
 }
-
+#changin the base url from /dev/ to /paradocs/jekyll/out/ 
 baseUrl_paradocs ()
 {	
 	VAR_1='\/dev\/'
@@ -82,7 +88,7 @@ baseUrl_paradocs ()
 	echo "base url change to /paradocs/jekyll/out/"
 }
 
-
+#console message printing,
 scriptMessage ()
 {
 	echo "\n\nsudo sh ./build.sh _command_\n"
@@ -96,6 +102,8 @@ scriptMessage ()
 	echo "\nCFP - to change file permission of out folder to 777\n\n\n\n"
 }
 
+
+#base on the command line argument, call the specific function
 OPTION=$1
 
 case "$OPTION" in
